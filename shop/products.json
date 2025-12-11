@@ -1,0 +1,27 @@
+[
+  {
+    "id": 1,
+    "name": "Premium Puppy Starter Kit",
+    "price": 1499,
+    "image": "https://images.unsplash.com/photo-1582456891925-a53965520520?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "badge": "New Arrival",
+    "description": "All essentials your new puppy needs in one adorable kit.",
+    "long_description": "The Premium Puppy Starter Kit includes high-quality puppy food, a soft chew toy, a cozy starter blanket, feeding bowls, and a basic grooming brush. Designed to help new pet parents give their furry friend the perfect start with comfort, nutrition, and playful bonding.",
+    "info": "Includes: Puppy food (1kg), plush toy, blanket, stainless steel bowls, grooming brush. Perfect for dogs aged 1–6 months.",
+    "return_policy": "7-day replacement for damaged, wrong or missing items.",
+    "shipping": "Fast delivery through trusted courier partners with doorstep tracking."
+  },
+  {
+    "id": 2,
+    "name": "Healthy Bites Dog Treats – Chicken Flavor",
+    "price": 299,
+    "image": "https://images.unsplash.com/photo-1583160247711-2191776b4b91?q=80&w=871&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "badge": "Best Seller",
+    "description": "Delicious & nutritious chicken treats your dog will love.",
+    "long_description": "Healthy Bites Chicken Treats are made from real chicken and enriched with essential vitamins to support your dog's overall health. Perfect for training rewards or simply showing love, these soft bites are suitable for all breeds and ages.",
+    "info": "Made with real chicken, high in protein, no artificial flavors, vet-approved, suitable for all dog sizes.",
+    "return_policy": "7-day replacement for damaged, wrong or missing items.",
+    "shipping": "Delivered safely with real-time tracking through third-party courier services."
+  }
+]
+

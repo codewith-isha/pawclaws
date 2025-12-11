@@ -1,0 +1,509 @@
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+.group ul {
+  display: none;
+}
+.glass-effect {
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: background 0.35s ease, color 0.25s ease, box-shadow 0.25s ease;
+}
+
+#main-header .heading-font1,
+#main-header nav a,
+#main-header nav button,
+#main-header #mobile-menu a,
+#main-header #mobile-menu button,
+#mobile-menu-btn {
+  color: white !important;
+}
+
+
+#main-header svg {
+  color: inherit;
+}
+#main-header.scrolled {
+  background: white !important;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  box-shadow: 0 8px 30px rgba(15,23,42,0.08);
+}
+#main-header.scrolled .heading-font1,
+#main-header.scrolled nav a,
+#main-header.scrolled nav button,
+#main-header.scrolled #mobile-menu a,
+#main-header.scrolled #mobile-menu button,
+#main-header.scrolled #mobile-menu-btn {
+  color: #0b0b0b !important;
+}
+
+/* keep Get Started button unchanged (your gold button) */
+#main-header a[class*="bg-\\[\\#C1A57B\\]"],
+#main-header .bg-\[\#C1A57B\] {
+  /* ensure it always remains as you styled it */
+  color: white !important;
+  background-color: #C1A57B !important;
+}
+
+#main-header.scrolled-text-only {
+  box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+}
+
+#main-header.scrolled-text-only .heading-font1,
+#main-header.scrolled-text-only nav a,
+#main-header.scrolled-text-only nav button,
+#main-header.scrolled-text-only #mobile-menu a,
+#main-header.scrolled-text-only #mobile-menu button,
+#main-header.scrolled-text-only #mobile-menu-btn {
+  color: #0b0b0b !important;
+}
+
+#mobile-menu {
+  transition: background 0.25s ease;
+}
+
+#main-header .group .bg-white a {
+  color: #0b0b0b !important;
+}
+
+
+
+
+
+
+.group:hover ul {
+  display: block !important;
+}
+
+
+
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+.heading-font {
+  font-family: "Playfair Display", serif;
+}
+.heading-font1 {
+    
+   font-family: "Open Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+.glass-effect {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.solid-nav {
+  background: white;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.gradient-bg {
+  background: linear-gradient(135deg, #6c2877 0%, #4785c4 50%, #c1a57b 100%);
+}
+
+.hero-gradient {
+  background: linear-gradient(
+    135deg,
+    rgba(108, 40, 119, 0.9) 0%,
+    rgba(71, 133, 196, 0.8) 100%
+  );
+}
+
+.floating {
+  animation: floating 6s ease-in-out infinite;
+}
+
+.about-gradient {
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+}
+
+.image-frame {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+.image-frame::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(108, 40, 119, 0.1) 0%,
+    rgba(71, 133, 196, 0.1) 100%
+  );
+  z-index: 1;
+  border-radius: 20px;
+}
+
+.profile-image {
+  transition: transform 0.5s ease;
+}
+
+.profile-card:hover .profile-image {
+  transform: scale(1.05);
+}
+
+.accent-line {
+  height: 4px;
+  width: 60px;
+  border-radius: 2px;
+  margin: 15px 0;
+}
+
+.blog-gradient {
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+}
+
+.blog-card {
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.blog-card:hover {
+  transform: translateY(-8px);
+}
+
+.about-gradient {
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+}
+
+.testimonials-gradient {
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+}
+
+
+
+@keyframes floating {
+  0% {
+    transform: translate(0, 0px);
+  }
+
+  50% {
+    transform: translate(0, -15px);
+  }
+
+  100% {
+    transform: translate(0, 0px);
+  }
+}
+@keyframes floatingShape {
+  0% {
+    transform: translate(0, 0px) scale(1);
+  }
+
+  50% {
+    transform: translate(-15px, -15px) scale(1.1);
+  }
+
+  100% {
+    transform: translate(0, 0px) scale(1);
+  }
+}
+.floatingShape {
+  animation: floatingShape 4s ease-in-out infinite;
+}
+@keyframes premiumBounce {
+  0%, 100% {
+    transform: translateY(0);
+    box-shadow: 0 8px 25px rgba(193, 165, 123, 0.3);
+  }
+  50% {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 35px rgba(193, 165, 123, 0.5);
+  }
+}
+
+.animate-premium-bounce {
+  animation: premiumBounce 1s ease-in-out infinite;
+}
+
+@keyframes floatingShape1 {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+
+  50% {
+    transform: translate(-15px, 15px) scale(1.1);
+  }
+
+  100% {
+    transform: translate(0, 0px) scale(1);
+  }
+}
+.floatingShape1 {
+  animation: floatingShape1 4s ease-in-out infinite;
+}
+
+.fade-in {
+  animation: fadeIn 1.5s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.footer-gradient {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+}
+
+.social-icon {
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.social-icon:hover {
+  transform: translateY(-3px);
+}
+
+.progress-wrap {
+  position: fixed;
+  inset-inline-end: 30px;
+  bottom: 30px;
+  height: 50px;
+  width: 50px;
+  padding: 6px;
+  cursor: pointer;
+  display: block;
+  border-radius: 50px;
+  z-index: 10000;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transform: translateY(15px);
+  -ms-transform: translateY(15px);
+  transform: translateY(15px);
+  -webkit-transition: all 200ms linear;
+  transition: all 200ms linear;
+  z-index: 99;
+  overflow: hidden;
+}
+
+.progress-wrap span {
+  position: absolute;
+  top: 50%;
+  inset-inline-start: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  width: 34px;
+  height: 34px;
+  background-color: var(--white);
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.progress-wrap span::after {
+  content: "\f176";
+  font-family: "Font Awesome 6 Free";
+  font-weight: 700;
+  position: absolute;
+  text-align: center;
+  line-height: 34px;
+  font-size: 18px;
+  border-radius: 50%;
+  /* color: #A88A60; */
+  color: #fff;
+  inset-inline-start: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, 200%);
+  -ms-transform: translate(-50%, 200%);
+  transform: translate(-50%, 200%);
+  height: 34px;
+  width: 34px;
+  cursor: pointer;
+  display: block;
+  z-index: 1;
+  -webkit-transition: all 200ms linear;
+  transition: all 200ms linear;
+}
+
+.progress-wrap span::before {
+  position: absolute;
+  content: "\f176";
+  font-family: "Font Awesome 6 Free";
+  font-weight: 700;
+  text-align: center;
+  line-height: 34px;
+  font-size: 18px;
+  border-radius: 50%;
+  /* color: #A88A60; */
+  color: #fff;
+  inset-inline-start: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  height: 34px;
+  width: 34px;
+  cursor: pointer;
+  display: block;
+  z-index: 2;
+  -webkit-transition: all 200ms linear;
+  transition: all 200ms linear;
+}
+
+.progress-wrap:hover span::before {
+  -webkit-transform: translate(-50%, -200%);
+  -ms-transform: translate(-50%, -200%);
+  transform: translate(-50%, -200%);
+}
+
+.progress-wrap:hover span::after {
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.progress-wrap path {
+  fill: none;
+}
+
+.active-progress {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: translateY(0) !important;
+}
+
+.progress-wrap .progress-circle path {
+  /* stroke: #A88A60; */
+  stroke: #fff;
+  stroke-width: 4;
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
+  -webkit-transition: all 200ms linear;
+  transition: all 200ms linear;
+}
+.spade {
+  position: absolute;
+  top: 15%;
+  left: 0;
+  z-index: 1;
+}
+.spade img {
+  max-width: 20vw;
+  min-width: 60px;
+  -webkit-animation: pulse 4s infinite ease-in-out;
+          animation: pulse 4s infinite ease-in-out;
+  animation: pulse 4s infinite ease-in-out;
+  
+}
+.spade1 {
+  position: absolute;
+  top: 56%;
+  /* inset-inline-start: 92%; */
+  right: 0;
+  z-index: 1;
+  transform: translateX(0);
+}
+.spade1 img {
+  max-width: 20vw;
+  min-width: 60px;
+  transform: scaleX(-1);
+  -webkit-animation: pulse 4s infinite ease-in-out;
+          animation: pulse 4s infinite ease-in-out;
+  animation: pulse 4s infinite ease-in-out;
+}
+
+.whatsapp-wrap {
+  position: fixed;
+  inset-inline-end: 30px;
+  bottom: 95px; 
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(15px);
+  transition: all 200ms linear;
+  text-decoration: none;
+}
+
+.whatsapp-wrap span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+}
+
+.whatsapp-wrap svg {
+  width: 26px;
+  height: 26px;
+  fill: #fff;
+}
+
+.whatsapp-button {
+  position: fixed;
+  inset-inline-end: 30px;
+  top: 100px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(15px);
+  transition: all 200ms linear;
+  text-decoration: none;
+}
+
+.whatsapp-button span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+}
+
+.whatsapp-button svg {
+  width: 26px;
+  height: 26px;
+  fill: #fff;
+}
+
+.blog-bg {
+  position: absolute;
+  top: 0px;
+  inset-inline: 0px;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  min-height: 400px;
+}
+.blog-bg img {
+  width: 100%;
+  height: 100%;
+  opacity: 0.4;
+}

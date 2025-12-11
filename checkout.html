@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Checkout | Intuitive Wizdom</title>
+    <!-- TailwindCSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="/assets/img/logo.png">
+    <link rel="stylesheet" href="/assets/style/mainstyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <style>
+        .gold-btn {
+            background-color: #C1A57B;
+        }
+
+        .gold-btn:hover {
+            background-color: #a88a60;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="fixed w-full z-50 bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16 lg:h-20">
+                <a href="/index.html" class="flex items-center gap-3 flex-shrink-0">
+                    <img src="/assets/img/logo.png" alt="Logo" class="h-10 w-10 object-contain" />
+                    <span class="text-lg sm:text-2xl font-semibold heading-font1">Intuitive Wizdom</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <div class="pt-24 pb-12 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
+            <div class="p-6 md:p-8">
+                <h1 class="text-3xl font-bold text-gray-900 mb-8 heading-font1">Checkout</h1>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Order Summary -->
+                    <div class="bg-gray-50 p-6 rounded-xl h-fit">
+                        <h2 class="text-xl font-semibold mb-4 text-gray-800">Order Summary</h2>
+                        <div id="product-summary" class="flex gap-4 mb-4">
+                            <!-- Populated by JS -->
+                            <div class="animate-pulse flex space-x-4 w-full">
+                                <div class="rounded-lg bg-gray-200 h-20 w-20"></div>
+                                <div class="flex-1 space-y-4 py-1">
+                                    <div class="h-4 bg-gray-200 rounded w-3/4"></div>
+                                    <div class="h-4 bg-gray-200 rounded w-1/2"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="border-t border-gray-200 pt-4">
+                            <div class="flex justify-between items-center text-lg font-bold text-gray-900">
+                                <span>Total</span>
+                                <span id="total-price">--</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Customer Details Form -->
+                    <div>
+                        <h2 class="text-xl font-semibold mb-4 text-gray-800">Your Details</h2>
+                        <form id="checkout-form" class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+                                <input type="text" id="name" name="name" required
+                                    class="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-[#C1A57B] focus:border-transparent outline-none transition-all"
+                                    placeholder="John Doe">
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+                                <input type="email" id="email" name="email" required
+                                    class="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-[#C1A57B] focus:border-transparent outline-none transition-all"
+                                    placeholder="john@example.com">
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" required
+                                    class="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-[#C1A57B] focus:border-transparent outline-none transition-all"
+                                    placeholder="+91 98765 43210">
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Shipping Address</label>
+                                <textarea id="address" name="address" rows="3" required
+                                    class="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-[#C1A57B] focus:border-transparent outline-none transition-all"
+                                    placeholder="Enter your full address"></textarea>
+                            </div>
+
+                            <button type="submit" id="pay-btn"
+                                class="w-full bg-[#C1A57B] text-white py-4 rounded-xl text-lg font-semibold hover:bg-[#a88a60] transition-all duration-300 shadow-md hover:shadow-lg mt-6 flex items-center justify-center gap-2">
+                                <span>Pay Now</span>
+                                <i class="fas fa-lock text-sm"></i>
+                            </button>
+                            <p class="text-xs text-gray-500 text-center mt-2">
+                                <i class="fas fa-shield-alt text-green-600"></i> Secure payment via Razorpay
+                            </p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const params = new URLSearchParams(window.location.search);
+            const productId = params.get("id");
+
+            if (!productId) {
+                window.location.href = '/shop.html';
+                return;
+            }
+
+            // Fetch Product Details
+            fetch("/shop/products.json")
+                .then(res => res.json())
+                .then(products => {
+                    const product = products.find(p => p.id == productId);
+                    if (!product) {
+                        alert("Product not found");
+                        window.location.href = '/shop.html';
+                        return;
+                    }
+
+                    // Render Summary
+                    document.getElementById('product-summary').innerHTML = `
+                        <div class="h-20 w-20 flex-shrink-0 overflow-hidden rounded-lg border border-gray-200">
+                            <img src="${product.image}" alt="${product.name}" class="h-full w-full object-cover object-center">
+                        </div>
+                        <div class="flex flex-col flex-1">
+                            <span class="font-medium text-gray-900 line-clamp-2">${product.name}</span>
+                            <span class="text-gray-500 text-sm">${product.badge || 'Product'}</span>
+                        </div>
+                    `;
+                    document.getElementById('total-price').textContent = `₹${product.price}`;
+
+                    // Handle Form Submission
+                    const form = document.getElementById('checkout-form');
+                    form.addEventListener('submit', function (e) {
+                        e.preventDefault();
+                        initiatePayment(product);
+                    });
+                });
+
+            function initiatePayment(product) {
+                const btn = document.getElementById('pay-btn');
+                const originalText = btn.innerHTML;
+                btn.disabled = true;
+                btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+
+                const formData = {
+                    product_id: product.id,
+                    name: document.getElementById('name').value,
+                    email: document.getElementById('email').value,
+                    phone: document.getElementById('phone').value,
+                    address: document.getElementById('address').value
+                };
+
+                fetch('/backend/create-order.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.error) {
+                            throw new Error(data.error);
+                        }
+
+                        const options = {
+                            "key": data.key_id,
+                            "amount": data.amount,
+                            "currency": data.currency,
+                            "name": "Intuitive Wizdom",
+                            "description": data.product_name,
+                            "image": "/assets/img/logo.png",
+                            "order_id": data.order_id,
+                            "prefill": {
+                                "name": formData.name,
+                                "email": formData.email,
+                                "contact": formData.phone
+                            },
+                            "notes": {
+                                "address": formData.address
+                            },
+                            "theme": {
+                                "color": "#C1A57B"
+                            },
+                            "handler": function (response) {
+                                verifyPayment(response, data.order_id);
+                            },
+                            "modal": {
+                                "ondismiss": function () {
+                                    btn.disabled = false;
+                                    btn.innerHTML = originalText;
+                                }
+                            }
+                        };
+
+                        const rzp1 = new Razorpay(options);
+                        rzp1.open();
+                    })
+                    .catch(error => {
+                        alert("Error: " + error.message);
+                        btn.disabled = false;
+                        btn.innerHTML = originalText;
+                    });
+            }
+
+            function verifyPayment(response, orderId) {
+                fetch('/backend/verify-payment.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        razorpay_payment_id: response.razorpay_payment_id,
+                        razorpay_order_id: response.razorpay_order_id,
+                        razorpay_signature: response.razorpay_signature
+                    })
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.success) {
+                            window.location.href = `/success.html?order_id=${orderId}`;
+                        } else {
+                            alert("Payment verification failed. Please contact support.");
+                        }
+                    })
+                    .catch(err => {
+                        console.error(err);
+                        alert("An error occurred while verifying payment.");
+                    });
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Order Success | Intuitive Wizdom</title>
+    <!-- TailwindCSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="/assets/img/logo.png">
+    <link rel="stylesheet" href="/assets/style/mainstyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+
+<body class="bg-gray-50 flex items-center justify-center min-h-screen">
+
+    <div class="bg-white p-8 rounded-2xl shadow-xl max-w-md w-full text-center">
+        <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+            <svg class="w-10 h-10 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+        </div>
+
+        <h1 class="text-3xl font-bold text-gray-900 mb-2 heading-font1">Payment Successful!</h1>
+        <p class="text-gray-600 mb-6">Thank you for your purchase. Your order has been confirmed.</p>
+
+        <div class="bg-gray-50 p-4 rounded-xl mb-6 text-left">
+            <p class="text-sm text-gray-500 mb-1">Order ID</p>
+            <p id="order-id" class="text-lg font-mono font-semibold text-gray-800">--</p>
+        </div>
+
+        <p class="text-sm text-gray-500 mb-8">
+            We have sent a confirmation email with the details.
+        </p>
+
+        <div class="space-y-3">
+            <a href="/shop.html"
+                class="block w-full bg-[#C1A57B] text-white py-3 rounded-xl font-semibold hover:bg-[#a88a60] transition-colors">
+                Continue Shopping
+            </a>
+            <a href="/index.html"
+                class="block w-full bg-white border border-gray-300 text-gray-700 py-3 rounded-xl font-semibold hover:bg-gray-50 transition-colors">
+                Back to Home
+            </a>
+        </div>
+    </div>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const orderId = params.get("order_id");
+        if (orderId) {
+            document.getElementById("order-id").textContent = orderId;
+        }
+    </script>
+</body>
+
+</html>
